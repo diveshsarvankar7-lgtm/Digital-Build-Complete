@@ -1,0 +1,23 @@
+kind = "web"
+previewPath = "/"
+title = "Digital Literacy Simulator"
+description = "An approachable smartphone practice simulator for older adults, with an authentic virtual phone, automatic task progression, multilingual guidance, and a facilitator analytics view."
+version = "1.0.0"
+id = "artifacts/digital-literacy-simulator"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/", "/api" ]
+localPort = 21450
+
+[services.development]
+run = "pnpm --filter @workspace/digital-literacy-simulator run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/digital-literacy-simulator", "run", "build" ]
+serve = "pnpm --filter @workspace/digital-literacy-simulator run start"
+
+[services.env]
+PORT = "21450"
+BASE_PATH = "/"
